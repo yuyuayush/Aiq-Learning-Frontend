@@ -1,0 +1,76 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "A person focused on learning at a computer.",
+      "imageUrl": "https://images.unsplash.com/photo-1512440731514-4de6f97c2d99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBsZWFybmluZ3xlbnwwfHx8fDE3NTk1Nzc5MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person learning"
+    },
+    {
+      "id": "course-1",
+      "description": "Abstract design representing web development.",
+      "imageUrl": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NTk1MDExODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development"
+    },
+    {
+      "id": "course-2",
+      "description": "A camera and photography equipment.",
+      "imageUrl": "https://images.unsplash.com/photo-1592810823152-56226733c365?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwaG90b2dyYXBoeSUyMGdlYXJ8ZW58MHx8fHwxNzU5NTc3OTAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "photography gear"
+    },
+    {
+      "id": "course-3",
+      "description": "Paint brushes and a colorful palette.",
+      "imageUrl": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnQlMjBzdXBwbGllc3xlbnwwfHx8fDE3NTk1MDY0MzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "art supplies"
+    },
+    {
+      "id": "course-4",
+      "description": "Someone writing notes in a journal.",
+      "imageUrl": "https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHdyaXRpbmd8ZW58MHx8fHwxNzU5NTc3OTAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "creative writing"
+    },
+    {
+      "id": "course-5",
+      "description": "Stock market charts on a screen.",
+      "imageUrl": "https://images.unsplash.com/photo-1744782211816-c5224434614f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmaW5hbmNpYWwlMjBjaGFydHxlbnwwfHx8fDE3NTk1MDAxNTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "financial chart"
+    },
+    {
+      "id": "course-6",
+      "description": "A person meditating in a peaceful setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1625395694544-079d163b769b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBtZWRpdGF0aW5nfGVufDB8fHx8MTc1OTUzNzcwM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person meditating"
+    },
+    {
+      "id": "avatar-1",
+      "description": "Avatar for instructor Jane Doe.",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzU5NTQ4MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "avatar-2",
+      "description": "Avatar for instructor John Smith.",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTk0NzE4Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "avatar-3",
+      "description": "Avatar for student Alex Ray.",
+      "imageUrl": "https://images.unsplash.com/photo-1567803641348-95489fa13cc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwZ2xhc3Nlc3xlbnwwfHx8fDE3NTk1NTIyMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person glasses"
+    },
+    {
+      "id": "avatar-4",
+      "description": "Avatar for student Maria Garcia.",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc1OTUyMDY3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "certificate-background",
+      "description": "Abstract background for a certificate.",
+      "imageUrl": "https://images.unsplash.com/photo-1565619624098-cf4168a7cd9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMHBhdHRlcm58ZW58MHx8fHwxNzU5NTIxNjg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract pattern"
+    }
+  ]
+}

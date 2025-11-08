@@ -1,0 +1,147 @@
+@import "../components/hide-scrollbar.css";
+/* Fredoka Google Font Regular */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap");
+
+/* Certificate Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap');
+
+@font-face {
+  font-family: "Hendrix";
+  src: url("/fonts/BRHendrix-Regular-BF6556d1b5096f9.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hendrix";
+  src: url("/fonts/BRHendrix-Bold-BF6556d1b5459d3.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  :root {
+    --background: 206 100% 95%;
+    --foreground: 210 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+    --primary: 206 81% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 206 50% 90%;
+    --secondary-foreground: 206 81% 60%;
+    --muted: 206 50% 90%;
+    --muted-foreground: 210 15% 45%;
+    --accent: 170 39% 39%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 206 50% 85%;
+    --input: 206 50% 85%;
+    --ring: 206 81% 60%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 210 20% 10%;
+    --foreground: 210 40% 98%;
+    --card: 210 20% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 210 20% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 206 81% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 20% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 20% 20%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 170 39% 39%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 25%;
+    --input: 210 20% 25%;
+    --ring: 206 81% 60%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Certificate Font Classes */
+.cedarville-cursive-regular {
+  font-family: var(--font-dancing-script), "Dancing Script", cursive !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+.bebas-neue-regular {
+  font-family: var(--font-bebas-neue), "Bebas Neue", "Arial Black", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+
+
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Hide scrollbar for horizontal scroll container */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
