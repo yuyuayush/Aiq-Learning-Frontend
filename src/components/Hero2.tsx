@@ -140,13 +140,10 @@ export default function Hero2() {
 
 
 
-
-
-
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-[#EDEBFF] via-[#F8F9FF] to-white py-24 px-6 sm:px-12 lg:px-20"
+      className="relative overflow-hidden bg-gradient-to-br from-[#EDEBFF] via-[#F8F9FF] to-white py-24 px-6 sm:px-12 lg:px-20 h-screen"
       style={{ borderRadius: 0 }} // Ensure initial state is 0 for ScrollTrigger
     >
       {/* Background gradient orbs */}
@@ -173,7 +170,7 @@ export default function Hero2() {
         <Image src="/props/16.png" alt="float" fill className="object-contain" />
       </div>
       <div
-        ref={(el) => {floatingImagesRef.current[3] = el; }}
+        ref={(el) => { floatingImagesRef.current[3] = el; }}
         className="floating-element absolute bottom-[15%] right-[10%] w-32 h-32 md:w-48 md:h-48 z-0 opacity-50"
       >
         <Image src="/props/18.png" alt="float" fill className="object-contain" />
@@ -242,7 +239,7 @@ export default function Hero2() {
           </p>
 
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+          <div className="mt-10 flex md:flex-row w-full sm:justify-center md:justify-start items-center gap-4">
             <Link href="/register">
 
               <button className="relative overflow-hidden px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#49A3E2] via-[#B599D5] to-[#C6A6EB] shadow-lg hover:shadow-xl hover:scale-105 transition">

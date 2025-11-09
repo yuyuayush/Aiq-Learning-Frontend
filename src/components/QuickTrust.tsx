@@ -227,7 +227,7 @@ const testimonials = [
   };
 
   return (
-    <section ref={sectionRef} className=" text-white py-20 md:py-32 relative">
+    <section ref={sectionRef} className=" text-white py-20 lg:pl-20 md:py-32 relative">
       <div className="w-full px-4 md:px-0">
         <div className="flex flex-col md:flex-row items-stretch md:items-center md:gap-0">
           {/* Left Content */}
