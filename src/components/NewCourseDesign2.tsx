@@ -239,20 +239,24 @@ const FlipFront = ({ course }) => {
                 <div className="absolute inset-0 bg-black opacity-5"></div>
 
                 <div className="relative bg-white/95 py-6 px-5 rounded-2xl shadow-xl backdrop-blur-sm">
+                    {/* Learner count */}
                     <div className="flex items-center gap-3 text-gray-600 text-base mb-3 font-semibold">
                         <span className="text-lg">🎓</span>
                         <span>{course.students || "1.7M+ Learners"}</span>
                     </div>
-                    <div className="flex justify-between items-center">
+
+                    {/* Title + Price */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
                         <h3 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">
                             {course.title}
                         </h3>
-                        {/* Dynamic pricing display */}
-                        <span className="text-lg font-extrabold text-indigo-600">{course.price}</span>
 
+                        <span className="inline-block text-lg sm:text-xl font-extrabold text-white px-4 py-1.5 rounded-full bg-gradient-to-r from-[#375DB9] to-[#7ED6F4] shadow-md">
+                            {course.price}
+                        </span>
                     </div>
-                    {/* <p className="text-sm text-gray-500 mt-2">{course.desc}</p> */}
                 </div>
+
             </div>
         </div>
     )
