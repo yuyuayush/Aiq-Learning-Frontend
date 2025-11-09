@@ -140,7 +140,7 @@ export default function CreativeIdea() {
                     <div className="flex flex-col justify-center space-y-6 lg:w-[55%] text-left">
                         <h1
                             ref={headingRef}
-                            className="text-4xl sm:text-5xl xl:text-6xl font-extrabold leading-tight drop-shadow-lg"
+                            className="text-3xl sm:text-5xl xl:text-6xl font-extrabold leading-tight drop-shadow-lg"
                         >
                             Reimagine your
                             <br />
@@ -173,9 +173,9 @@ export default function CreativeIdea() {
                             ].map((item, i) => (
                                 <div
                                     key={i}
-                                    className="flex items-center gap-2 hover:translate-x-1 transition-transform"
+                                    className="text-lg lg:text-2xl flex items-center gap-2 hover:translate-x-1 transition-transform"
                                 >
-                                    <span className={`${item.color} text-lg`}>{item.icon}</span>
+                                    <span className={`${item.color} `}>{item.icon}</span>
                                     <p className="text-gray-50">{item.text}</p>
                                 </div>
                             ))}
