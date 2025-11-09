@@ -88,7 +88,7 @@ const Footer = () => {
                 your skills and accelerate your career growth.
               </p>
               <div className="flex gap-4 mt-5 text-gray-600">
-                {[ FaTwitter, FaInstagram].map(
+                {[ FaInstagram].map(
                   (Icon, i) => (
                     <a
                       key={i}

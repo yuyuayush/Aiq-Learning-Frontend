@@ -14,64 +14,149 @@ const QuickTrust = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Jack T.",
-      role: "Student",
-      rating: 5,
-      text: "Finding and enrolling in a course on AiQ Learning was incredibly easy. The content is top-notch and the learning environment is great. I highly recommend and will be enrolling in another course soon!",
-    },
-    {
-      id: 2,
-      name: "Rita M.",
-      role: "Student",
-      rating: 5,
-      text: "The courses at AiQ Learning are fantastic, applying what I learned in my job. The pace was easy to see and the instructor was brilliant. Great value and would highly recommend for anyone to spark!",
-    },
-    {
-      id: 3,
-      name: "Sarah K.",
-      role: "Student",
-      rating: 5,
-      text: "Excellent platform with high-quality content. The instructors are knowledgeable and the course structure is perfect for learning at your own pace.",
-    },
-    {
-      id: 4,
-      name: "Mike D.",
-      role: "Student",
-      rating: 5,
-      text: "AiQ Learning has transformed my career. The practical approach and real-world examples make learning engaging and effective.",
-    },
-    {
-      id: 5,
-      name: "Priya S.",
-      role: "Student",
-      rating: 5,
-      text: "I loved the interactive lessons and the supportive community. AiQ Learning made it easy to stay motivated and complete my course.",
-    },
-    {
-      id: 6,
-      name: "Carlos V.",
-      role: "Student",
-      rating: 4,
-      text: "Great content and instructors! The platform is user-friendly and the resources provided are very helpful for self-study.",
-    },
-    {
-      id: 7,
-      name: "Emily W.",
-      role: "Student",
-      rating: 5,
-      text: "The flexibility of AiQ Learning allowed me to balance my studies with work. Highly recommend for busy professionals.",
-    },
-    {
-      id: 8,
-      name: "David L.",
-      role: "Student",
-      rating: 4,
-      text: "I gained practical skills that I could apply immediately. The course materials are well-structured and easy to follow.",
-    },
-  ];  
+const testimonials = [
+  {
+    id: 1,
+    name: "Jack T.",
+    role: "Student",
+    rating: 5,
+    text: "Finding and enrolling in a course on AiQ Learning was incredibly easy. The content is top-notch and the learning environment is great. I highly recommend and will be enrolling in another course soon!",
+  },
+  {
+    id: 2,
+    name: "Rita M.",
+    role: "Student",
+    rating: 5,
+    text: "The courses at AiQ Learning are fantastic, applying what I learned in my job. The pace was easy to see and the instructor was brilliant. Great value and would highly recommend for anyone to spark!",
+  },
+  {
+    id: 3,
+    name: "Sarah K.",
+    role: "Student",
+    rating: 5,
+    text: "Excellent platform with high-quality content. The instructors are knowledgeable and the course structure is perfect for learning at your own pace.",
+  },
+  {
+    id: 4,
+    name: "Mike D.",
+    role: "Student",
+    rating: 5,
+    text: "AiQ Learning has transformed my career. The practical approach and real-world examples make learning engaging and effective.",
+  },
+  {
+    id: 5,
+    name: "Priya S.",
+    role: "Student",
+    rating: 5,
+    text: "I loved the interactive lessons and the supportive community. AiQ Learning made it easy to stay motivated and complete my course.",
+  },
+  {
+    id: 6,
+    name: "Carlos V.",
+    role: "Student",
+    rating: 4,
+    text: "Great content and instructors! The platform is user-friendly and the resources provided are very helpful for self-study.",
+  },
+  {
+    id: 7,
+    name: "Emily W.",
+    role: "Student",
+    rating: 5,
+    text: "The flexibility of AiQ Learning allowed me to balance my studies with work. Highly recommend for busy professionals.",
+  },
+  {
+    id: 8,
+    name: "David L.",
+    role: "Student",
+    rating: 4,
+    text: "I gained practical skills that I could apply immediately. The course materials are well-structured and easy to follow.",
+  },
+  // --- New Testimonials Added Below ---
+  {
+    id: 9,
+    name: "Aisha N.",
+    role: "Software Developer",
+    rating: 5,
+    text: "As a professional, I appreciate the **in-depth, advanced topics**. The AI Ethics course was particularly insightful and directly applicable to my projects.",
+  },
+  {
+    id: 10,
+    name: "Ben F.",
+    role: "Data Scientist",
+    rating: 5,
+    text: "Absolutely the best platform for **Machine Learning** courses. The hands-on labs and peer review system elevate the learning experience.",
+  },
+  {
+    id: 11,
+    name: "Chen L.",
+    role: "Product Manager",
+    rating: 4,
+    text: "The 'AI for Non-Technical Leaders' course was a game-changer. I wish there was more post-course support, but the content itself was top-tier.",
+  },
+  {
+    id: 12,
+    name: "Lena H.",
+    role: "Recent Graduate",
+    rating: 5,
+    text: "I used AiQ Learning to build a portfolio that helped me land my first job. The **career-focused projects** made all the difference!",
+  },
+  {
+    id: 13,
+    name: "Omar Z.",
+    role: "Entrepreneur",
+    rating: 5,
+    text: "Efficient and high-impact. I learned how to integrate AI into my startup's operations in weeks, not months. **Excellent ROI.**",
+  },
+  {
+    id: 14,
+    name: "Kim A.",
+    role: "Marketing Specialist",
+    rating: 4,
+    text: "The curriculum on **Generative AI** was incredibly current. The only small issue was occasional video buffering, but the quality of teaching overshadowed it.",
+  },
+  {
+    id: 15,
+    name: "Rajesh P.",
+    role: "Student",
+    rating: 5,
+    text: "Fantastic support team and highly responsive instructors. It truly feels like a **personalized learning journey**.",
+  },
+  {
+    id: 16,
+    name: "Sophie R.",
+    role: "IT Consultant",
+    rating: 5,
+    text: "I've tried other platforms, but AiQ Learning's focus on **practical application and real-world scenarios** is unmatched.",
+  },
+  {
+    id: 17,
+    name: "Gary B.",
+    role: "Student",
+    rating: 3,
+    text: "While the instructor was excellent, the prerequisites for the advanced course weren't clear enough. I had to spend extra time catching up.",
+  },
+  {
+    id: 18,
+    name: "Nina M.",
+    role: "HR Manager",
+    rating: 5,
+    text: "Completed the 'AI in Business' course. The content was perfect for understanding how to leverage AI without needing to code. **Highly recommended for business users.**",
+  },
+  {
+    id: 19,
+    name: "Hugo T.",
+    role: "Freelancer",
+    rating: 5,
+    text: "The **self-paced learning** model is perfect for my unpredictable schedule. I was able to gain a new, marketable skill easily.",
+  },
+  {
+    id: 20,
+    name: "Eva G.",
+    role: "Data Analyst",
+    rating: 4,
+    text: "Solid, technical content. The assignments were challenging but rewarding. I would love to see more courses on **advanced deep learning frameworks**.",
+  },
+];
 
   // Scroll-triggered animations for the left content
   useEffect(() => {
@@ -123,7 +208,7 @@ const QuickTrust = () => {
         { x: 0 }, // Start from visible position
         {
           x: `-${containerWidth}px`, // Move to left by full width
-          duration: 25, // Medium speed - 25 seconds for full cycle
+          duration: 50, // Medium speed - 25 seconds for full cycle
           ease: "none",
           repeat: -1,
         }
@@ -142,7 +227,7 @@ const QuickTrust = () => {
   };
 
   return (
-    <section ref={sectionRef} className="text-white py-20 md:py-32 relative">
+    <section ref={sectionRef} className=" text-white py-20 md:py-32 relative">
       <div className="w-full px-4 md:px-0">
         <div className="flex flex-col md:flex-row items-stretch md:items-center md:gap-0">
           {/* Left Content */}
@@ -193,8 +278,8 @@ const QuickTrust = () => {
           <div className="w-full md:w-[55%] relative">
             <div className="overflow-hidden h-[240px] sm:h-[260px] md:h-[280px] flex items-center relative">
               {/* Fade overlays */}
-              <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-[#B98CF1] to-transparent z-10 pointer-events-none"></div>
-              <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-[#B98CF1] to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute left-0 top-7  w-16 h-[80%] bg-gradient-to-r from-[#e0def7c4] rounded-tl-sm rounded-bl-sm to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-[#E0DEF7] to-transparent z-10 pointer-events-none"></div>
 
               <div ref={marqueeRef} className="flex gap-2">
                 {/* Original testimonials - no duplication */}
@@ -210,14 +295,14 @@ const QuickTrust = () => {
                       {testimonial.text}
                     </p>
                     <div className="flex items-center gap-3 sm:gap-4 mt-auto">
-                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gray-300 rounded-full border-2 border-gray-200 flex-shrink-0"></div>
+                      {/* <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gray-300 rounded-full border-2 border-gray-200 flex-shrink-0"></div> */}
                       <div>
                         <p className="font-semibold text-gray-900 text-sm sm:text-base">
                           {testimonial.name}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        {/* <p className="text-xs text-gray-500">
                           {testimonial.role}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </div>

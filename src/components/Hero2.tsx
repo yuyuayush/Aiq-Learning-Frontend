@@ -4,10 +4,19 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, SplitText);
 }
+
+export const handleScrollTo = (where: string) => {
+  gsap.to(window, {
+    duration: 1.5, // Scroll duration
+    scrollTo: `#${where}`, // The ID of your courses section
+    ease: "power2.inOut",
+  });
+};
 
 export default function Hero2() {
   const aiqRef = useRef<HTMLSpanElement>(null);
@@ -129,7 +138,7 @@ export default function Hero2() {
     return () => ctx.revert();
   }, []);
 
-  // ---
+
 
 
 
@@ -164,7 +173,7 @@ export default function Hero2() {
         <Image src="/props/16.png" alt="float" fill className="object-contain" />
       </div>
       <div
-        ref={(el) => { floatingImagesRef.current[3] = el; }}
+        ref={(el) => {floatingImagesRef.current[3] = el; }}
         className="floating-element absolute bottom-[15%] right-[10%] w-32 h-32 md:w-48 md:h-48 z-0 opacity-50"
       >
         <Image src="/props/18.png" alt="float" fill className="object-contain" />
@@ -234,10 +243,15 @@ export default function Hero2() {
 
 
           <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-            <button className="relative overflow-hidden px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#49A3E2] via-[#B599D5] to-[#C6A6EB] shadow-lg hover:shadow-xl hover:scale-105 transition">
-              Start Learning
-            </button>
-            <button className="px-8 py-3 rounded-xl border border-[#C6A6EB] text-[#3B5480] font-semibold bg-white hover:bg-[#F1ECFE] transition">
+            <Link href="/register">
+
+              <button className="relative overflow-hidden px-8 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#49A3E2] via-[#B599D5] to-[#C6A6EB] shadow-lg hover:shadow-xl hover:scale-105 transition">
+                Start Learning
+              </button>
+            </Link>
+            <button
+              onClick={() => handleScrollTo("course-section")}
+              className="px-8 py-3 rounded-xl border border-[#C6A6EB] text-[#3B5480] font-semibold bg-white hover:bg-[#F1ECFE] transition">
               Explore Courses
             </button>
           </div>
