@@ -12,7 +12,7 @@ interface ApiResponse<T = any> {
 class ApiError extends Error {
     status: number;
     data: any;
-    
+
     constructor(message: string, status: number, data: any = null) {
         super(message);
         this.name = 'ApiError';
@@ -61,7 +61,7 @@ const apiRequest = async <T = any>(endpoint: string, options: RequestInit & { he
 
     try {
         const response = await fetch(url, config);
-        
+
         let data;
         try {
             data = await response.json();
@@ -78,7 +78,7 @@ const apiRequest = async <T = any>(endpoint: string, options: RequestInit & { he
                     localStorage.removeItem('aiq-user');
                 }
             }
-            
+
             throw new ApiError(
                 data?.message || `HTTP error! status: ${response.status}`,
                 response.status,
@@ -160,14 +160,14 @@ export const coursesApi = {
     // Get all published courses (for students to browse)
     async getPublished(params: Record<string, any> = {}): Promise<ApiResponse> {
         const queryParams = new URLSearchParams();
-        
+
         // Convert params to URLSearchParams
         Object.keys(params).forEach(key => {
             if (params[key] !== undefined && params[key] !== null) {
                 queryParams.append(key, params[key].toString());
             }
         });
-        
+
         return await apiRequest<ApiResponse>(`/courses?${queryParams}`);
     },
 
@@ -276,7 +276,7 @@ export const coursesApi = {
             eventSource.onmessage = (event) => {
                 console.log('📩 SSE test message received:', event.data);
                 messageCount++;
-                
+
                 try {
                     const data = JSON.parse(event.data);
                     if (data.complete) {
@@ -314,7 +314,7 @@ export const coursesApi = {
                     'Content-Type': 'application/json',
                 },
             });
-            
+
             const data = await response.json();
             console.log('✅ CORS Test Response:', data);
             return data;
@@ -338,44 +338,44 @@ export const coursesApi = {
         formData.append('courseId', courseId);
         formData.append('sectionIndex', sectionIndex.toString());
         formData.append('lectureIndex', lectureIndex.toString());
-        
+
         if (thumbnailFile) {
             formData.append('thumbnail', thumbnailFile);
         }
 
         const token = getToken();
-        
+
         // Hybrid progress tracking: Try SSE first, fall back to polling
         // Simple milestone-based progress tracking
         const progressKey = `${courseId}-${sectionIndex}-${lectureIndex}`;
         let progressMilestones = [20, 40, 60, 80, 90, 100];
         let currentMilestoneIndex = 0;
-        
+
         // Start progress tracking by periodically checking backend
         let progressCheckInterval: NodeJS.Timeout | null = null;
         let progressCompleted = false;
-        
+
         if (onProgress) {
             console.log('📹 Starting milestone-based progress tracking...');
             onProgress(0); // Start at 0%
-            
+
             progressCheckInterval = setInterval(async () => {
                 if (progressCompleted) {
                     clearInterval(progressCheckInterval!);
                     return;
                 }
-                
+
                 try {
                     const response = await fetch(`${API_BASE_URL}/courses/progress-milestone/${progressKey}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
-                    
+
                     if (response.ok) {
                         const data = await response.json();
                         if (data.milestone && data.milestone > (progressMilestones[currentMilestoneIndex - 1] || 0)) {
                             console.log('📹 Progress milestone reached:', data.milestone + '%');
                             onProgress(data.milestone);
-                            
+
                             if (data.milestone >= 100) {
                                 progressCompleted = true;
                                 clearInterval(progressCheckInterval!);
@@ -387,7 +387,7 @@ export const coursesApi = {
                 }
             }, 1000); // Check every second for milestone updates
         }
-        
+
         try {
             console.log('📹 Starting video upload...');
             const response = await fetch(`${API_BASE_URL}/courses/upload-video`, {
@@ -399,7 +399,7 @@ export const coursesApi = {
             });
 
             const data = await response.json();
-            
+
             if (!response.ok) {
                 throw new ApiError(data.message || 'Upload failed', response.status, data);
             }
@@ -421,26 +421,26 @@ export const coursesApi = {
             if (progressCheckInterval) {
                 clearInterval(progressCheckInterval);
             }
-            
+
             if (error instanceof ApiError) {
                 throw error;
             }
-            
+
             throw new ApiError('Network error during upload', 0, null);
         }
     },
 
     // Upload video for lecture (legacy - complex route)
     async uploadLectureVideo(
-        courseId: string, 
-        sectionId: string, 
-        lectureId: string, 
-        videoFile: File, 
+        courseId: string,
+        sectionId: string,
+        lectureId: string,
+        videoFile: File,
         thumbnailFile?: File
     ): Promise<ApiResponse> {
         const formData = new FormData();
         formData.append('video', videoFile);
-        
+
         if (thumbnailFile) {
             formData.append('thumbnail', thumbnailFile);
         }
@@ -545,7 +545,7 @@ export const certificateApi = {
         } catch (error: any) {
             // Handle various certificate API unavailability scenarios
             console.warn('Certificate list error:', error.status, error.message);
-            
+
             // For any certificate API error, just return empty list
             // This prevents dashboard loading issues
             return {
@@ -563,7 +563,7 @@ export const certificateApi = {
         } catch (error: any) {
             // Handle various certificate API unavailability scenarios
             console.warn('Certificate API error:', error.status, error.message);
-            
+
             if (error.status === 404) {
                 return {
                     success: false,
@@ -585,7 +585,7 @@ export const certificateApi = {
                     serviceUnavailable: true
                 };
             }
-            
+
             // For any other error, return a generic unavailable response
             return {
                 success: false,
@@ -605,7 +605,7 @@ export const certificateApi = {
         } catch (error: any) {
             // Handle various certificate API unavailability scenarios
             console.warn('Certificate generation error:', error.status, error.message);
-            
+
             if (error.status === 404) {
                 return {
                     success: false,
@@ -628,7 +628,7 @@ export const certificateApi = {
                     serviceUnavailable: true
                 };
             }
-            
+
             // For any other error, return a generic unavailable response
             return {
                 success: false,
@@ -656,11 +656,11 @@ export const certificateApi = {
                 'Authorization': `Bearer ${getToken()}`,
             },
         });
-        
+
         if (!response.ok) {
             throw new ApiError('Failed to fetch certificate image', response.status);
         }
-        
+
         return await response.blob();
     },
 };
@@ -733,6 +733,15 @@ export const wishlistApi = {
         return await apiRequest<ApiResponse>(`/wishlist/check/${courseId}`);
     },
 };
+
+export const paymentApi = {
+    async createPaymentIntent(productName: string, amount: number): Promise<ApiResponse> {
+        return await apiRequest<ApiResponse>('/stripe', {
+            method: "POST",
+            body: JSON.stringify({ productName, amount }),
+        });
+    }
+}
 
 // Export helper functions
 export { ApiError, getToken, setToken, removeToken };

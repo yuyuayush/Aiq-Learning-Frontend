@@ -101,7 +101,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = async (name: string, email: string, pass: string) => {
     try {
       const response = await authApi.register(name, email, pass, "learner");
-      
       if (response.user) {
         localStorage.setItem("aiq-user", JSON.stringify(response.user));
         setCurrentUser(response.user);

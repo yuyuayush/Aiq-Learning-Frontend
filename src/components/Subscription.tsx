@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import { paymentApi } from "@/lib/api";
 
 const courses = [
   {
@@ -51,11 +52,37 @@ const courses = [
 ];
 
 export const Subscription = () => {
+  const [loading, setLoading] = useState(false);
   const mainGradient = "from-[#4F46E5] via-[#A855F7] to-[#EC4899]";
 
+  const courseEnrollPayment = async ({
+    productName,
+    amount,
+  }: {
+    productName: string;
+    amount: string | number;
+  }) => {
+    const numericAmount =
+      typeof amount === "string" ? Number(amount.replace(/[^0-9.]/g, "")) : amount;
+
+    try {
+      setLoading(true);
+      const data = await paymentApi.createPaymentIntent(productName, numericAmount);
+      console.log(data);
+      window.location.href = data.url;
+    } catch (err) {
+      console.error("Payment creation failed:", err);
+      alert("Payment failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section id="subscription-section" className="relative text-gray-800 py-20 px-6 md:px-10 xl:px-20 overflow-hidden">
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-[#F0F4FF] to-[#FFFFFF]"></div> */}
+    <section
+      id="subscription-section"
+      className="relative text-gray-800 py-20 px-6 md:px-10 xl:px-20 overflow-hidden"
+    >
       <div className="absolute -top-32 -left-20 w-[350px] h-[350px]  rounded-full blur-3xl opacity-50 animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#A855F7]/20 rounded-full blur-3xl opacity-50 animate-pulse delay-700"></div>
 
@@ -64,9 +91,20 @@ export const Subscription = () => {
           🚀 Learn AI the Copilot Way
         </h2>
         <p className="text-gray-600 text-base md:text-lg mt-3 max-w-2xl mx-auto">
-          Boost your productivity with <strong>hands-on AI and Copilot learning paths</strong> — built for creators, developers, and teams.
+          Boost your productivity with{" "}
+          <strong>hands-on AI and Copilot learning paths</strong> — built for creators, developers, and teams.
         </p>
       </div>
+
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+          <div className="bg-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3">
+            <div className="w-5 h-5 border-4 border-t-transparent border-indigo-600 rounded-full animate-spin"></div>
+            <p className="text-indigo-700 font-semibold">Processing Payment...</p>
+          </div>
+        </div>
+      )}
 
       {/* Courses Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
@@ -76,20 +114,12 @@ export const Subscription = () => {
             className="group relative border border-gray-200 bg-white/90 backdrop-blur-sm rounded-2xl p-8 transition-all duration-300 shadow-xl hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#4F46E5]/30"
           >
             <div className="flex flex-col items-center pb-4">
-              {/* <Image
-                src={course.img}
-                alt={course.title}
-                // Set fixed high dimensions required by Next.js, but let Tailwind control the display size
-                width={100}
-                height={100}
-                className="
-        rounded-full shadow-lg mb-4 object-cover border-4 border-white 
-        w-20 h-20 
-        group-hover:border-[#8B5CF6] transition-colors
-    "
-              /> */}
-              <h3 className="text-2xl font-bold mb-1 text-[#1F2937]">{course.title}</h3>
-              <p className="text-gray-500 whitespace-pre-line text-center text-sm mb-3">{course.desc}</p>
+              <h3 className="text-2xl font-bold mb-1 text-[#1F2937]">
+                {course.title}
+              </h3>
+              <p className="text-gray-500 whitespace-pre-line text-center text-sm mb-3">
+                {course.desc}
+              </p>
               <p
                 className={`text-4xl font-extrabold bg-gradient-to-r ${mainGradient} bg-clip-text text-transparent mb-4`}
               >
@@ -98,7 +128,9 @@ export const Subscription = () => {
             </div>
 
             <div className="text-left border-t border-gray-200 pt-5 space-y-3">
-              <p className="text-sm font-semibold text-gray-700 mb-2">What you'll learn:</p>
+              <p className="text-sm font-semibold text-gray-700 mb-2">
+                What you'll learn:
+              </p>
               {course.modules.map((mod, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="mt-1 w-2 h-2 bg-[#6366F1] rounded-full flex-shrink-0"></span>
@@ -109,9 +141,15 @@ export const Subscription = () => {
 
             <div className="mt-8 flex justify-center">
               <button
-                className={`px-8 py-3 bg-gradient-to-r ${mainGradient} text-white font-semibold text-lg rounded-lg transition-all shadow-md hover:shadow-lg hover:shadow-[#4F46E5]/50 active:scale-95`}
+                onClick={() =>
+                  courseEnrollPayment({ productName: course.title, amount: course.price })
+                }
+                disabled={loading}
+                className={`px-8 py-3 bg-gradient-to-r ${mainGradient} text-white font-semibold text-lg rounded-lg transition-all shadow-md hover:shadow-lg hover:shadow-[#4F46E5]/50 active:scale-95 ${
+                  loading ? "opacity-60 cursor-not-allowed" : ""
+                }`}
               >
-                Enroll Now
+                {loading ? "Processing..." : "Enroll Now"}
               </button>
             </div>
 
@@ -130,13 +168,21 @@ export const Subscription = () => {
           <p className="text-gray-600 mb-6">
             Get all 3 courses together at a discounted price. Learn AI, Copilot 365, and Email AI effectively!
           </p>
-          <p className={`text-5xl font-extrabold bg-gradient-to-r ${mainGradient} bg-clip-text text-transparent mb-6`}>
+          <p
+            className={`text-5xl font-extrabold bg-gradient-to-r ${mainGradient} bg-clip-text text-transparent mb-6`}
+          >
             $69.99
           </p>
           <button
-            className={`px-12 py-4 bg-gradient-to-r ${mainGradient} text-white font-semibold text-lg rounded-xl transition-all shadow-lg hover:shadow-2xl hover:shadow-[#4F46E5]/50 active:scale-95`}
+            disabled={loading}
+            onClick={() =>
+              courseEnrollPayment({ productName: "AI Mastery Combo", amount: "$69.99" })
+            }
+            className={`px-12 py-4 bg-gradient-to-r ${mainGradient} text-white font-semibold text-lg rounded-xl transition-all shadow-lg hover:shadow-2xl hover:shadow-[#4F46E5]/50 active:scale-95 ${
+              loading ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           >
-            Enroll in Combo
+            {loading ? "Processing..." : "Enroll in Combo"}
           </button>
           <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-[#A855F7]/20 to-[#4F46E5]/20 rounded-3xl blur-3xl opacity-70"></div>
         </div>

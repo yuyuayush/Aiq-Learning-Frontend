@@ -18,10 +18,10 @@ const Home = () => {
       <Hero2 />
       {/* <Hero /> */}
       <QuickTrust />
-        <NewCourseDesign2 />
+      <NewCourseDesign2 />
 
-        <CreativeIdea />
-        <Subscription />
+      <CreativeIdea />
+      <Subscription />
       <div className="bg-gradient-to-br from-[#9186f7] via-[#dce0f8] to-[#f8c7f0dc]">
 
         {/* <CourseSection /> */}

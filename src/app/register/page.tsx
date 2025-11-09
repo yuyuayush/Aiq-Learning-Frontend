@@ -59,11 +59,10 @@ export default function RegisterPage() {
       <div className="hidden lg:flex absolute top-8 left-1/2 transform -translate-x-1/2 flex-col z-30">
         <button
           onClick={handleLoginClick}
-          className={`relative text-xl font-semibold px-10 py-4 transition-all duration-300 ${
-            pathname === "/login"
+          className={`relative text-xl font-semibold px-10 py-4 transition-all duration-300 ${pathname === "/login"
               ? "bg-white text-purple-700 shadow-2xl border-2 border-purple-200"
               : "bg-white/20 text-purple-700 border border-white/30 hover:bg-white/30 hover:text-purple-700"
-          }`}
+            }`}
           style={{
             borderRadius: "32px 32px 0 0",
             minWidth: "160px",
@@ -73,11 +72,10 @@ export default function RegisterPage() {
         </button>
         <button
           onClick={handleSignUpClick}
-          className={`relative text-xl font-semibold px-10 py-4 transition-all duration-300 ${
-            pathname === "/register"
+          className={`relative text-xl font-semibold px-10 py-4 transition-all duration-300 ${pathname === "/register"
               ? "bg-white text-purple-700 shadow-2xl border-2 border-purple-200"
               : "bg-white/20 text-purple-700 border border-white/30 hover:bg-white/30 hover:text-purple-700"
-          }`}
+            }`}
           style={{
             borderRadius: "0 0 32px 32px",
             minWidth: "160px",
@@ -113,7 +111,6 @@ export default function RegisterPage() {
               alt="AiQ Learning"
               className="h-24 w-auto object-contain brightness-0 invert drop-shadow-lg"
             />
-            <span className="text-5xl font-bold tracking-tight">LEARNING</span>
           </Link>
 
           {/* Main content - much larger */}
@@ -175,21 +172,19 @@ export default function RegisterPage() {
             <div className="flex bg-gray-100 rounded-lg p-1">
               <button
                 onClick={handleLoginClick}
-                className={`px-8 py-3 rounded-md font-semibold transition-all duration-300 ${
-                  pathname === "/login"
+                className={`px-8 py-3 rounded-md font-semibold transition-all duration-300 ${pathname === "/login"
                     ? "bg-white text-purple-700 shadow-lg border border-purple-200"
                     : "text-gray-500 opacity-60 hover:text-gray-600 hover:opacity-80"
-                }`}
+                  }`}
               >
                 Login
               </button>
               <button
                 onClick={handleSignUpClick}
-                className={`px-8 py-3 rounded-md font-semibold transition-all duration-300 ${
-                  pathname === "/register"
+                className={`px-8 py-3 rounded-md font-semibold transition-all duration-300 ${pathname === "/register"
                     ? "bg-white text-purple-700 shadow-lg border border-purple-200"
                     : "text-gray-500 opacity-60 hover:text-gray-600 hover:opacity-80"
-                }`}
+                  }`}
               >
                 Sign Up
               </button>

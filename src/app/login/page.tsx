@@ -114,7 +114,6 @@ export default function LoginPage() {
               alt="AiQ Learning"
               className="h-24 w-auto object-contain brightness-0 invert drop-shadow-lg"
             />
-            <span className="text-5xl font-bold tracking-tight">LEARNING</span>
           </Link>
 
           {/* Main content - much larger */}
