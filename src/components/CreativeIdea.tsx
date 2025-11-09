@@ -182,23 +182,7 @@ export default function CreativeIdea() {
                         </div>
 
                         {/* BUTTONS */}
-                        <div className="pt-4 fade-up flex flex-wrap  items-center gap-4">
-                            {/* Primary Button */}
-                            <button className="flex-1 relative overflow-hidden bg-white text-[#202230] font-semibold px-8 py-3 rounded-xl shadow-md transition hover:scale-105">
-                                <span className="relative z-10">Learn More</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#C6A6EB] to-[#49A3E2] opacity-0 hover:opacity-100 transition-opacity" />
-                            </button>
-
-                            {/* Secondary Scroll Button */}
-                            <button
-                                onClick={() => handleScrollTo("course-section")}
-                                className="flex-1 px-8 py-3 rounded-xl border border-white/50 text-white font-semibold bg-transparent hover:bg-white/10 transition"
-                            >
-                                Explore Courses
-                            </button>
-
-
-                        </div>
+                        
                     </div>
 
                     {/* RIGHT: IMAGE */}

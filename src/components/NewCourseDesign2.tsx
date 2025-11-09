@@ -181,46 +181,57 @@ const FlipCard = ({ course }: { course: any }) => {
 const FlipBack = ({ course }) => {
     return (
         <div className="absolute inset-0 rotate-y-180 backface-hidden bg-white text-gray-900 rounded-3xl shadow-xl p-8 flex flex-col justify-between border border-indigo-100">
+            {/* HEADER */}
             <div className="mb-4">
                 <h3 className="text-2xl font-bold text-indigo-800 mb-2">
                     {course.title}
                 </h3>
-                <p className="text-base text-gray-500 font-medium">
+                <p className="text-base text-gray-500 font-medium leading-relaxed">
                     {course.desc}
                 </p>
             </div>
 
-            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-200 scrollbar-track-white pr-2">
-                <h4 className="text-lg font-bold text-gray-700 mb-3 border-b border-indigo-100 pb-1">
-                    What You'll Learn:
+            {/* SCROLLABLE LEARNING LIST */}
+            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-200 scrollbar-track-transparent pr-2">
+                <h4 className="text-lg font-bold text-gray-700 mb-4 border-b border-indigo-100 pb-2">
+                    What You’ll Learn
                 </h4>
+
                 <ul className="space-y-3">
-                    {course?.modules?.map((mod: string, i: number) => (
+                    {course?.modules?.map((mod, i) => (
                         <li
                             key={i}
-                            className="flex items-start gap-2 text-sm text-gray-700 bg-indigo-50/50 p-2.5 rounded-lg border border-indigo-100"
+                            className="group flex items-start gap-3 text-sm text-gray-700 
+                            bg-gradient-to-r from-indigo-50 to-blue-50 
+                            p-3 rounded-xl border border-indigo-100 
+                            shadow-sm hover:shadow-md 
+                            hover:translate-x-1 transition-all duration-300"
                         >
-                            <Check className="w-4 h-4 text-indigo-600 mt-0.5 flex-shrink-0" />
-                            <span className="leading-snug">{mod}</span>
+                            <div className="flex-shrink-0 mt-0.5 rounded-full bg-indigo-100 p-1.5 group-hover:bg-indigo-600 transition-colors">
+                                <Check className="w-3.5 h-3.5 text-indigo-600 group-hover:text-white" />
+                            </div>
+                            <span className="leading-snug font-medium">{mod}</span>
                         </li>
                     ))}
                 </ul>
             </div>
 
+            {/* BUTTON */}
             <div className="mt-8 text-center">
-                <button onClick={() => handleScrollTo("subscription-section")}
-                    // Enhanced button style with gradient and lift
-                    className="w-full py-3 text-xl font-bold text-white rounded-xl 
-                    bg-gradient-to-r from-indigo-600 via-blue-500 to-indigo-600 
+                <button
+                    onClick={() => handleScrollTo("subscription-section")}
+                    className="w-full py-3 text-lg font-bold text-white rounded-xl 
+                    bg-gradient-to-r from-indigo-600 via-[#375DB9] to-[#7ED6F4] 
                     shadow-[0_8px_20px_rgba(99,102,241,0.5)] transition-all duration-300 
-                    hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(0,163,255,0.7)]"
+                    hover:scale-[1.03] hover:shadow-[0_12px_25px_rgba(0,163,255,0.6)]"
                 >
                     Enroll Now for {course.price}
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
+
 
 // ✅ FlipFront component (Improved Overlay and Typography)
 const FlipFront = ({ course }) => {

@@ -88,7 +88,7 @@ const Footer = () => {
                 your skills and accelerate your career growth.
               </p>
               <div className="flex gap-4 mt-5 text-gray-600">
-                {[ FaInstagram].map(
+                {[FaInstagram].map(
                   (Icon, i) => (
                     <a
                       key={i}
@@ -111,21 +111,13 @@ const Footer = () => {
                     Courses
                   </Link>
                 </li>
-                <li>
-                  <Link href="/about" className="hover:text-[#49A3E2]">
-                    About Us
-                  </Link>
-                </li>
+
                 <li>
                   <Link href="/contact" className="hover:text-[#49A3E2]">
                     Contact
                   </Link>
                 </li>
-                <li>
-                  <Link href="/careers" className="hover:text-[#49A3E2]">
-                    Careers
-                  </Link>
-                </li>
+
               </ul>
             </div>
 
